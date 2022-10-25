@@ -3,8 +3,6 @@ import time
 import os
 import HandTrackingModule as htm
 import datetime
-from playsound import playsound
-
 
 wCam, hCam = 1920, 1080
 cap = cv2.VideoCapture(0)
@@ -16,9 +14,6 @@ pTime = 0
 detector = htm.handDetector(detectionCon=1)
 
 Player1 = []
-StartTime = 0
-EndTime = 0
-dwell_time = 0
 
 while True:
     
@@ -62,7 +57,6 @@ while True:
         #Welcome Thumb, pointer and Pinkie
         if lmlist[4][1] > lmlist[3][1] and lmlist[8][2] < lmlist[6][2] and lmlist[12][2] > lmlist[10][2] and lmlist[16][2] > lmlist[14][2] and lmlist[20][2] < lmlist[18][2]:
             Player1.append('code')
-            playsound(r'C:\Users\haris\Documents\GitHub\Haz3-jolt\Pong_with_opencv\venv\GISA.mp3')
         
 
 
