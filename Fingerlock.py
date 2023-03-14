@@ -54,10 +54,10 @@ while True:
         else:
             Player1.append('0')        
 
-        #Welcome Thumb, pointer and Pinkie
+        #Example command Thumb, pointer and Pinkie are extended here
         if lmlist[4][1] > lmlist[3][1] and lmlist[8][2] < lmlist[6][2] and lmlist[12][2] > lmlist[10][2] and lmlist[16][2] > lmlist[14][2] and lmlist[20][2] < lmlist[18][2]:
             Player1.append('code')
-        
+                                    #Add any additional commands to be executed over here
 
 
 
