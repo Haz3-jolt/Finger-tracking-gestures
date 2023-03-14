@@ -1,6 +1,6 @@
 # Finger-tracking-gestures
 
-A python program which uses OpenCV to track the fingers of a person, and then executes commands if it detects a relevant 
+A python program which uses OpenCV to track the fingers of a person, and then executes commands if it detects a prerequisite condition
 
 To use this program, have the cv2, mediapipe libraries installed.
 
