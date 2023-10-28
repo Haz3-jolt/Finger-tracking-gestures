@@ -1,8 +1,6 @@
 import cv2
 import time
-import os
 import HandTrackingModule as htm
-import datetime
 
 wCam, hCam = 1920, 1080
 cap = cv2.VideoCapture(0)
