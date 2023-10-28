@@ -52,7 +52,7 @@ This project is highly customizable to suit your needs. You can modify the code 
 
 Watch a demonstration of this project on YouTube:
 
-![Demo Video](https://youtu.be/antiUyaTSao)
+[Demo Video](https://youtu.be/antiUyaTSao)
 
 
 ## License
