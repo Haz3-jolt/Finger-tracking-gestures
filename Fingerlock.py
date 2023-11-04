@@ -70,6 +70,7 @@ while True:
     fps = 1 / (cTime-pTime)
     pTime = cTime
 
+    # Shows the FPS of the program
     cv2.putText(img, f'FPS: {int(fps)}',(400,70), cv2.FONT_HERSHEY_COMPLEX, 3, (255, 0, 0), 3)
 
     cv2.imshow("Image", img)
