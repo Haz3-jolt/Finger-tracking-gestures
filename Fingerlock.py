@@ -10,7 +10,7 @@ frame = cap.read()
 pTime = 0
 
 detector = htm.handDetector(detectionCon=1)
-# temp for dailies
+
 Player1 = []
 
 while True:
