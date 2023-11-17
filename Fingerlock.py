@@ -98,6 +98,7 @@ while True:
             speak("Pain Please help")
             with open('pain_log.txt', 'a') as f:
                 f.write(f'Pain reported at {datetime.datetime.now()}\n')
+            cv2.putText(img, "PAIN", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
         print('Player1', Player1)
     
     
