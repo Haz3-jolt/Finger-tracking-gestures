@@ -52,7 +52,8 @@ class handDetector():
                     myHand.append((int(landMark.x*width), int(landMark.y*height)))
                 myHands.append(myHand)
         return myHands
- 
+
+# resolution specs
 width=1920
 height=1080
 

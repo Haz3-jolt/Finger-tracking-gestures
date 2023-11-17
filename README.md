@@ -48,12 +48,6 @@ For customization and specific usage instructions, refer to the provided documen
 
 This project is highly customizable to suit your needs. You can modify the code to work with different Python libraries and integrate it into your applications. The code is well-documented and provides a foundation for creating custom finger gesture recognition systems.
 
-## Demonstration
-
-Watch a demonstration of this project on YouTube:
-
-[Demo Video](https://youtu.be/antiUyaTSao)
-
 
 ## License
 
