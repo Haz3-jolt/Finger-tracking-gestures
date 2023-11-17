@@ -96,6 +96,8 @@ while True:
         if lmlist[4][1] < lmlist[3][1] and lmlist[8][2] < lmlist[6][2] and lmlist[12][2] < lmlist[10][2] and lmlist[16][2] < lmlist[14][2] and lmlist[20][2] > lmlist[18][2]:
             Player1.append('Pain')
             speak("Pain Please help")
+            with open('pain_log.txt', 'a') as f:
+                f.write(f'Pain reported at {datetime.datetime.now()}\n')
         print('Player1', Player1)
     
     
