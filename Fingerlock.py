@@ -92,13 +92,13 @@ while True:
             itin.patient_itinerary.clear()
             speak("Itinerary cleared")
 
-        # Pinkie alone extended here and it reads the itinerary
+        # Pointer middle and ring are extended here and it signals pain
         if lmlist[4][1] < lmlist[3][1] and lmlist[8][2] < lmlist[6][2] and lmlist[12][2] < lmlist[10][2] and lmlist[16][2] < lmlist[14][2] and lmlist[20][2] > lmlist[18][2]:
             Player1.append('Pain')
             speak("Pain Please help")
             with open('pain_log.txt', 'a') as f:
                 f.write(f'Pain reported at {datetime.datetime.now()}\n')
-            cv2.putText(img, "PAIN", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                
         print('Player1', Player1)
     
     
