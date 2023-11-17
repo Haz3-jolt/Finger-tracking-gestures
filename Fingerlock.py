@@ -1,6 +1,9 @@
 import cv2
 import time
 import HandTrackingModule as htm
+import pyttsx3
+import datetime
+import itin 
 
 wCam, hCam = 1920, 1080
 cap = cv2.VideoCapture(0)
@@ -12,6 +15,13 @@ pTime = 0
 detector = htm.handDetector(detectionCon=1)
 
 Player1 = []
+lights_on = False
+
+engine = pyttsx3.init()
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
 
 while True:
     
@@ -22,48 +32,72 @@ while True:
     if len(lmlist) != 0:
         Player1 = []
 
-        #Thumb 
+        # Thumb Finger 
         if lmlist[4][1] > lmlist[3][1]:
             Player1.append('1')
         else:
             Player1.append('0')
 
-        #Index 
+        # Index FInger 
         if lmlist[8][2] < lmlist[6][2]:
             Player1.append('1')
         else:
             Player1.append('0')
 
-        #Middle
+        # Middle
         if lmlist[12][2] < lmlist[10][2]:
             Player1.append('1')
         else:
             Player1.append('0')
         
-        #Ring
+        # Ring
         if lmlist[16][2] < lmlist[14][2]:
             Player1.append('1')
         else:
             Player1.append('0')
 
-        #Pinkie
+        # Pinkie
         if lmlist[20][2] < lmlist[18][2]:
             Player1.append('1')
         else:
             Player1.append('0')        
 
-        #Example command Thumb, pointer and Pinkie are extended here
+        # Example command Thumb, pointer and Pinkie are extended here
         if lmlist[4][1] > lmlist[3][1] and lmlist[8][2] < lmlist[6][2] and lmlist[12][2] > lmlist[10][2] and lmlist[16][2] > lmlist[14][2] and lmlist[20][2] < lmlist[18][2]:
-            Player1.append('code')
-                                    #Add any additional commands to be executed over here
+            if not lights_on:
+                Player1.append('Lights on')
+                speak("Lights on")
+                lights_on = True
+            else:
+                Player1.append('Lights on')
+                speak("Lights off")
+                lights_on = False
+        
+        # Example command Thumb, pointer and middle are extended here and it calls out to a nurse
+        if lmlist[4][1] > lmlist[3][1] and lmlist[8][2] < lmlist[6][2] and lmlist[12][2] < lmlist[10][2] and lmlist[16][2] > lmlist[14][2] and lmlist[20][2] > lmlist[18][2]:
+            Player1.append('Nurse')
+            speak("Nurse")
 
+        # Example command Thumb and pinkie are extended and it adds a food request to their itineary
+        if lmlist[4][1] > lmlist[3][1] and lmlist[8][2] > lmlist[6][2] and lmlist[12][2] > lmlist[10][2] and lmlist[16][2] > lmlist[14][2] and lmlist[20][2] < lmlist[18][2]:
+            Player1.append('Food')
+            food_time = (datetime.datetime.now() + datetime.timedelta(minutes=20)).time()
+            itin.add_activity(food_time, "Food")
+            speak(itin.get_next_activity())
+            print(itin.patient_itinerary)
 
+        if lmlist[4][1] > lmlist[3][1] and lmlist[8][2] > lmlist[6][2] and lmlist[12][2] > lmlist[10][2] and lmlist[16][2] > lmlist[14][2] and lmlist[20][2] > lmlist[18][2]:
+            Player1.append('Clear')
+            itin.patient_itinerary.clear()
+            speak("Itinerary cleared")
 
-
+        if lmlist[4][1] < lmlist[3][1] and lmlist[8][2] > lmlist[6][2] and lmlist[12][2] > lmlist[10][2] and lmlist[16][2] > lmlist[14][2] and lmlist[20][2] < lmlist[18][2]:
+            speak(itin.get_next_activity())
+            print(itin.patient_itinerary)
         print('Player1', Player1)
     
-
     
+
         
     
     cTime = time.time()
@@ -75,5 +109,6 @@ while True:
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
+
 
 
